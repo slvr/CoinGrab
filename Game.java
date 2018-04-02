@@ -50,8 +50,9 @@ public class Game {
 	private void AITurn(int prevRem){
 		ArrayList<Integer> fib2kDecomp = new ArrayList<Integer>();
 		if(this.getCoins() <= 2*prevRem){
+			int rem = this.getCoins();
 			removeCoins(this.getCoins());
-			System.out.println("Comp removed " + this.getCoins() + " coins");
+			System.out.println("Comp removed " + rem + " coins");
 			System.out.println("You lose!");
 		}
 		else{
