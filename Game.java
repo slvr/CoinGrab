@@ -12,6 +12,7 @@ public class Game {
 		firstTurn();
 	}
 	
+	@SuppressWarnings("resource")
 	private void firstTurn(){
 		Scanner scanner = new Scanner(System.in);
 		int toRemove = this.getCoins();
@@ -58,8 +59,13 @@ public class Game {
 		else{
 			fib2kDecomp = decomp(this.getCoins());
 			int toRemove = fib2kDecomp.get(fib2kDecomp.size()-1);
-			if(toRemove > 2*prevRem){
+			if(toRemove > 2*prevRem && 2*prevRem < (1/3)*this.getCoins()){
 				toRemove = 2*prevRem;
+			}
+			else{
+				int tot = this.getCoins();
+				tot = tot / 3;
+				toRemove = tot - 1;
 			}
 			removeCoins(toRemove);
 			System.out.println("Comp removed " + toRemove + " coins");
